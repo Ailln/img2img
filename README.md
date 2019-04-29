@@ -1,4 +1,4 @@
-# img2img
+# img2img: Image to Image
 
 🔮快速转化图片格式
 
@@ -35,6 +35,17 @@ Python setup.py install
 
 ## 3 使用
 
+目前总共支持6种方法，如下：
+
+1. jpg2png
+2. png2jpg
+3. jpg2ico
+4. ico2jpg
+5. png2ico
+6. ico2png
+
+下文中使用 `jpg2png` 作为演示，其他方法同理。
+
 ### 3.1 在代码中调用
 
 ```python
@@ -43,20 +54,25 @@ import img2img
 
 # 查看版本
 img2img.__version__
-# output: 0.0.1
+# output: 0.1.0
+
+img = img2img.Img2img()
+
+# 默认输出路径和输入路径相同
+img.convert("jpg2png", "./test.jpg")
+
+# 支持手动修改输出路径
+img.convert("jpg2png", "./test.jpg", "../new_test.png")
 ```
-
-#### 1 jpg2png
-
-> 开发中...
 
 ### 3.2 在命令行中使用
 
-#### 1 jpg2png
-
 ```bash
-jpg2png $your_jpg_path
-# png 图片会保存在相同目录下
+# 默认输出路径和输入路径相同 
+jpg2png ./test.jpg
+
+# 支持手动修改输出路径
+jpg2png ./test.jpg ../new_test.png
 ```
 
 ## 4 版本支持

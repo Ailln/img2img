@@ -18,7 +18,12 @@ setup(
     long_description_content_type="text/markdown",
     entry_points={
         "console_scripts": [
-            "jpg2png=img2img:jpg2png"
+            "jpg2png=img2img:jpg2png",
+            "png2jpg=img2img:png2jpg",
+            "jpg2ico=img2img:jpg2ico",
+            "ico2jpg=img2img:ico2jpg",
+            "png2ico=img2img:png2ico",
+            "ico2png=img2img:ico2png"
         ]
     },
     zip_safe=False,
