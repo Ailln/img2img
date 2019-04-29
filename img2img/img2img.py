@@ -16,7 +16,7 @@ class Img2img():
 
     def convert(self, method, input_path, output_path=None):
         if method in self.methods:
-            print("start convert ...")
+            print(f"start convert: {input_path}")
             method_input_type, method_output_type = method.split("2")
 
             input_split_list = os.path.splitext(input_path)
@@ -38,9 +38,12 @@ class Img2img():
 
         input_path = self.input_name + self.input_type
         img = Image.open(input_path)
+        if self.input_type == ".png":
+            img = img.convert('RGB')
         output_path = self.output_name + self.output_type
         img.save(output_path)
-        print(f"success !\nsave in: {output_path}")
+        print(f"save in: {output_path}")
+        return output_path
 
     def convert_from_shell(self, method):
         if method in sys.argv[0]:

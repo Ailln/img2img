@@ -56,7 +56,7 @@ import img2img
 
 # 查看版本
 img2img.__version__
-# output: 0.1.1
+# output: 0.1.2
 
 img = img2img.Img2img()
 
