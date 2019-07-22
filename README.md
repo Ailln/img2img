@@ -2,9 +2,9 @@
 
 🔮快速转化图片格式
 
-[![Python 3.6](https://img.shields.io/badge/language-Py36-pink.svg)](https://docs.python.org/3.6/)
-[![Pypi](https://img.shields.io/pypi/v/img2img.svg)](https://pypi.org/project/img2img/)
-[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![](https://award.dovolopor.com?lt=language&rt=Py36&rbc=pink)](https://docs.python.org/3.6/)
+[![](https://award.dovolopor.com?lt=PyPI&rt=0.1.2)](https://pypi.org/project/img2img/)
+[![](https://award.dovolopor.com?lt=Ailln's&rt=idea&lbc=lightgray&rbc=red&ltc=red)](https://github.com/HaveTwoBrush/award)
 
 > **🚨更新日志：**
 >
@@ -16,7 +16,7 @@
 
 ## 1 功能
 
-1. 转化图片格式；
+1. 支持 **6 种**常见图片格式转化；
 2. 支持在**命令行**调用；
 3. 支持在[**网页上**](https://www.dovolopor.com/img2img)使用。
 
@@ -90,7 +90,7 @@ jpg2png ./test.jpg ../new_test.png
 
 ## 5 协议
 
-[MIT License](https://github.com/HaveTwoBrush/img2img/blob/master/LICENSE)
+[![](https://award.dovolopor.com?lt=License&rt=MIT&rbc=green)](./LICENSE)
 
 ## 6 参考
 

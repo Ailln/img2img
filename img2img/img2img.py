@@ -3,7 +3,8 @@ import sys
 
 from PIL import Image
 
-class Img2img():
+
+class Img2img(object):
     def __init__(self):
         self.methods = [
             "jpg2png",
@@ -20,27 +21,27 @@ class Img2img():
             method_input_type, method_output_type = method.split("2")
 
             input_split_list = os.path.splitext(input_path)
-            self.input_name = input_split_list[0]
-            self.input_type = input_split_list[1]
+            input_name = input_split_list[0]
+            input_type = input_split_list[1]
 
-            assert(self.input_type[1:] == method_input_type)
+            assert(input_type[1:] == method_input_type)
 
             if output_path:
                 output_split_list = os.path.splitext(output_path)
-                self.output_name = output_split_list[0]
-                self.output_type = output_split_list[1]
-                assert(self.output_type[1:] == method_output_type) 
+                output_name = output_split_list[0]
+                output_type = output_split_list[1]
+                assert(output_type[1:] == method_output_type)
             else:
-                self.output_name = input_split_list[0]
-                self.output_type = "." + method_output_type
+                output_name = input_split_list[0]
+                output_type = "." + method_output_type
         else:
             raise ValueError(f"{method} not allowed !")
 
-        input_path = self.input_name + self.input_type
+        input_path = input_name + input_type
         img = Image.open(input_path)
-        if self.input_type == ".png":
+        if input_type == ".png":
             img = img.convert('RGB')
-        output_path = self.output_name + self.output_type
+        output_path = output_name + output_type
         img.save(output_path)
         print(f"save in: {output_path}")
         return output_path
