@@ -17,14 +17,15 @@ class Img2img(object):
 
     def convert(self, method, input_path, output_path=None):
         if method in self.methods:
-            print(f"start convert: {input_path}")
-            method_input_type, method_output_type = method.split("2")
-
+            print(f"\n>> start convert: {input_path}")
             input_split_list = os.path.splitext(input_path)
             input_name = input_split_list[0]
             input_type = input_split_list[1]
 
-            assert(input_type[1:] == method_input_type)
+            method_input_type, method_output_type = method.split("2")
+            if input_type[1:] != method_input_type:
+                print(f"!! {input_path} can not convert to {method_input_type}")
+                return
 
             if output_path:
                 output_split_list = os.path.splitext(output_path)
@@ -43,7 +44,7 @@ class Img2img(object):
             img = img.convert('RGB')
         output_path = output_name + output_type
         img.save(output_path)
-        print(f"save in: {output_path}")
+        print(f">> save in: {output_path}")
         return output_path
 
     def convert_from_shell(self, method):
@@ -53,11 +54,24 @@ class Img2img(object):
                 raise Exception(f"请在 {method} 后输入需要转化的图片路径！")
             elif len_argv == 2:
                 input_path = sys.argv[1]
-                self.convert(method, input_path)
+                # 判断是文件还是文件夹
+                if os.path.isfile(input_path):
+                    self.convert(method, input_path)
+                elif os.path.isdir(input_path):
+                    for _path in os.listdir(input_path):
+                        self.convert(method, os.path.join(input_path, _path))
+                else:
+                    raise Exception(f"输入路径错误: {input_path}")
             elif len_argv == 3:
                 input_path = sys.argv[1]
                 output_path = sys.argv[2]
-                self.convert(method, input_path, output_path)
+                if os.path.isfile(input_path):
+                    self.convert(method, input_path, output_path)
+                elif os.path.isdir(input_path):
+                    for _path in os.listdir(input_path):
+                        self.convert(method, os.path.join(input_path, _path), output_path)
+                else:
+                    raise Exception(f"输入路径错误: {input_path}")
             else:
                 raise Exception(f"{method} 后的参数过多！")
     
